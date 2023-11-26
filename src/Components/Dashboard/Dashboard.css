@@ -1,0 +1,630 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&family=DM+Serif+Display&family=Inconsolata:wght@300;400;500&family=Indie+Flower&family=Montserrat:wght@500&family=Orbitron:wght@400;500&family=Roboto+Mono&family=Shadows+Into+Light&display=swap');
+
+/* @font-face {
+    font-family: 'Kungfu'; 
+    src: url('/Public/Fonts/KungFuMasterSpaced-MV7gp.otf') format('opentype'); 
+} */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+:root {
+    font-size: 16px;
+    --main: palevioletred;
+    --main2: #9370db;
+    --bg-dark: #121212;
+    --bg-grey: #252525;
+}
+
+/* Index ------------------------------------------------------------------------ */
+.landing-wrapper {
+    display: flex;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+.heading {
+    position: absolute;
+    margin-top: 10px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    justify-content: center;
+    text-align: center;
+    font-family: 'Kungfu', sans-serif;
+    font-size: 5rem;
+    color: wheat;
+}
+
+.heading > #sub-text {
+    font-family:fantasy;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+}
+
+.heading > .grad  {
+    font-family: 'Kungfu', sans-serif;
+    animation: bg-grad 2s linear infinite;
+    text-shadow: -8px -4px wheat;
+    background: linear-gradient(
+        to right,
+        #3f5efb,
+        #fc466b,
+        #3f5efb
+    );
+
+    background-size: 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    white-space: nowrap;
+}
+
+@keyframes bg-grad {
+    from {
+        background-position: 0% center;
+    }
+    to {
+        background-position: 200% center;
+    }
+}
+
+#get-started-button {
+    margin-top: 90px;
+    font-family: 'Kungfu', sans-serif;
+    font-size: 1.2rem;
+    width: 150px;
+    height: 50px;
+    background-color: #9ec1f2;
+    border: none;
+    box-shadow: 4px 4px #8980ac;
+    transition: all 0.1s ease-out;
+}
+
+#get-started-button:hover {
+    background-color: #6c9ee5;
+    box-shadow: 6px 6px #C2B7EE;
+   
+}
+
+#get-started-button:active {
+    transform: translate(3px, 3px);
+    box-shadow: 0px 0px black;
+}
+
+
+@media all and (max-width: 900px) {
+    .heading {
+        font-size: 4rem;
+    } 
+    .heading > #sub-text {
+        font-family:fantasy;
+        font-size: 1rem;
+        letter-spacing: 2px;
+    }
+    .heading > .grad  {
+        text-shadow: -6px -2px wheat;
+    }
+}
+
+@media all and (max-width: 700px) {
+    .heading {
+        font-size: 3rem;
+    } 
+    .heading > #sub-text {
+        font-family:fantasy;
+        font-size: 1rem;
+        letter-spacing: 2px;
+    }
+    .heading > .grad  {
+        text-shadow: -4px -2px wheat;
+    }
+    #get-started-button {
+        margin-top: 60px;
+        width: 120px;
+        height: 40px;
+        font-size: 1rem;
+    }
+}
+
+@media all and (max-width: 550px) {
+    .heading {
+        font-size: 2rem;
+    } 
+    .heading > #sub-text {
+        font-family:fantasy;
+        font-size: 0.8rem;
+        letter-spacing: 1px;
+    }
+    #get-started-button {
+        margin-top: 60px;
+        width: 90px;
+        height: 30px;
+        font-size: 0.7rem;
+    }
+}
+
+@media all and (max-width: 330px) {
+    .heading {
+        font-size: 1.7rem;
+    } 
+    .heading > #sub-text {
+        font-family:fantasy;
+        font-size: 0.7rem;
+        letter-spacing: 1px;
+    }
+}
+
+/* Info -------------------------------------------------------------------------------- */
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: opacity 0.3s ease-in-out;
+}
+
+#info-popup {
+    z-index: 3;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid black;
+    transform: translate(-50%, -50%) scale(0.8);
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+        
+}
+
+#overlay.active, #info-popup.active {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.info-wrapper {
+    display: flex;
+    position: relative;
+}
+
+.info-bg {
+    display: flex;
+    width: 80vw;
+    height: 90vh;
+    position: relative;
+    /* background-image: url(/Public/Images/pexels-markus-spiske-6445409.jpg); */
+    background-size: cover;
+    filter: brightness(35%);
+}
+
+.info {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    color: wheat;
+    flex-direction: column;
+    font-family: 'Kungfu', sans-serif;
+    align-items: center;
+    justify-content: space-around;
+}
+
+#info-heading {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    font-family: 'Kungfu', sans-serif;
+    font-size: 2rem;
+}
+
+#info-close{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 35px;
+    border: none;
+    border-radius: 5px;
+    background-color: lightgray;
+}
+
+#info-close:hover {
+    background-color: gray;
+}
+
+.info > ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.info > ul > li {
+    margin: 0px 50px;
+    font-size: 22px;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.spoiderman {
+    width: 30px;
+    height: 30px;
+    transform: translateY(7px);
+}
+
+/* Generate ------------------------------------------------------------------------ */
+.generate-wrapper {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+}
+
+.left-col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 30%;
+    background-color: #C4D7F2;
+    gap: 1.5rem;
+    height: 100%;
+    overflow: scroll;
+    padding-top: 4rem;
+    padding-bottom: 2rem;
+}
+
+.right-col {
+    align-items: center;
+    width: 70%;
+    background-color:#E6F2F8;
+    flex-grow: 1;
+    overflow: scroll;
+    /* display: flex;
+    flex-direction: column; */
+}
+
+
+
+
+/* Left col ---------------------------*/
+.prompt-wrapper {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+label {
+    font-family: 'Kungfu', sans-serif;
+    font-size: 18px;
+}
+
+#userPrompt {
+    font-size: 16px;
+    width: 300px;
+    height: 40px;
+    border-radius: 5px;
+    border: 2px solid black;
+    outline: none;
+    text-indent: 10px;
+}
+
+#userPrompt:focus {
+    border: 2px solid blue;
+}
+
+.input-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.error {
+    font-size: 14px;
+    color: rgb(189, 32, 32);
+    align-self: flex-start;
+}
+
+#generateButton, #download-button {
+    cursor: pointer;
+    background-color: pink;
+    width: 100px;
+    border-radius: 3px;
+    height: 40px;
+    text-align: center;
+    box-shadow: 4px 4px black;
+    font-size: 14px;
+}
+
+#generateButton {
+    align-self: center;
+}
+
+#download-button {
+    margin-right: 7%;
+    /* align-self: flex-end; */
+}
+
+#generateButton:hover, #download-button:hover {
+    background-color: rgb(232, 126, 162);
+}
+
+#generateButton:active, #download-button:active {
+    transform: translate(4px, 4px);
+    box-shadow: 0px 0px black;
+}
+
+#generateButton:disabled {
+    cursor: pointer;
+}
+
+.marker-button-wrapper {
+    display: flex;
+    width: fit-content;
+    justify-content: space-evenly;
+    gap: 40px;
+}
+
+#editButton, #confirmButton, #retryButton{
+    margin-top: 5px;
+    position: relative;
+    border: none;
+    font-size: 16px;
+    width: 60px;
+    height: 40px;
+    background-color: inherit;
+    border-radius: 10px;
+    border: 2px solid black;
+    color: black;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+#confirmButton {
+    width: auto;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+#editButton:hover {
+    background-color: rgb(79, 175, 213);
+}
+
+#confirmButton:hover {
+    background-color: lightgreen;
+}
+
+#editButton:active, #confirmButton:active, #gen-to-home:active, #gen-to-info:active {
+    scale: 0.95;
+}
+
+/* Loader --------*/
+#loader {
+    width: 100%;
+    height: 100%;
+    display: block;
+    margin: auto;
+    position: relative;
+    background: #FFF;
+    box-sizing: border-box;
+    z-index: 2;
+}
+
+#loader::after {
+    content: '';
+    width: calc(100% - 30px);
+    height: calc(100% - 15px);
+    top: 15px;
+    left: 15px;
+    position: absolute;
+    background-image: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5) 50%, transparent 100%),
+     linear-gradient(#DDD 100px, transparent 0),
+     linear-gradient(#DDD 16px, transparent 0),
+     linear-gradient(#DDD 50px, transparent 0);
+    background-repeat: no-repeat;
+    background-size: 75px 175px, 100% 100px, 100% 16px, 100% 30px;
+    background-position: -185px 0, center 0, center 115px, center 142px;
+    box-sizing: border-box;
+    animation: animloader 1s linear infinite;
+  }
+  
+@keyframes animloader {
+    to {
+      background-position: 185px 0, center 0, center 115px, center 142px;
+    }
+}
+
+#loader {
+    display: none;
+}
+
+/* Right col --------------------- */
+.comic-edit-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    flex-grow: 1;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.button-wrapper {
+    display: flex;
+    width: 95%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#gen-to-home, #gen-to-info {
+    margin-left: 20px;
+    background-color: #cdb4db;
+    cursor: pointer;
+    width: 100px;
+    height: 40px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 14px;
+}
+
+#gen-to-home:hover, #gen-to-info:hover {
+    background-color: #9f6dbb;
+}
+
+#gen-to-info {
+    width: 130px;
+    margin-right: 40px;
+}
+
+.slider-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.comic-panel {
+    display: flex;
+    align-items: center;
+    min-height: 420px;
+    width: 96%;
+    margin-left: 2%;
+    background-color: white;
+    border: 2px dashed lightgrey;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.grid {
+    padding: 5px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    min-height: 400px;
+    justify-items: center;
+    align-items: center;
+    gap: 1rem;
+    background-color:white;
+    padding: 1rem 2rem;
+}
+
+
+.panel {
+    position: relative;
+    width: 12.5rem;
+    height: 12.5rem;
+    border: 3px solid #121212;
+}
+
+.edit-panel {
+    position: relative;
+    width: 18rem;
+    aspect-ratio: 1 / 1;
+    border: 3px solid #121212;
+}
+
+#download-button {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.selected {
+    border: 3px solid blue !important;  /* Fix specificity later */
+}
+
+.action-buttons {
+    display: none;
+}
+
+.edit-small, .delete-small {
+    width: 35px;
+    aspect-ratio: 1;
+}
+
+.edit-small {
+    background-image: url('../../Assets/edit.svg');
+    background-size: contain;
+}
+
+.delete-small {
+    background-image: url('../../Assets/delete.svg');
+    background-size: contain;
+}
+
+.edit-small:hover, .delete-small:hover {
+    background-color: pink;
+}
+
+.panel.selected .action-buttons {
+    display: flex;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    gap: 4px;
+}
+
+.panel-image {
+    width: 100%;
+    height: 100%;
+}
+
+#marker-img {
+    width: 100%;
+    height: 100%;
+}
+
+
+@media screen and (max-width:1500px) {
+    .left-col {
+        width: 40vw;
+    }
+    .right-col {
+        width: 60vw;
+    }
+    .grid{
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (max-width:1200px) {
+    .grid{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width:1000px) {
+    .left-col {
+        width: 100vw;
+        height: auto;
+        padding-bottom: 20px;
+    }
+    .right-col {
+        padding-top: 20px;
+        width: 100vw;
+        height: auto;
+    }
+    .generate-wrapper{
+        display: block;
+    }
+    .grid{
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+}
+
+@media screen and (max-width:500px) {
+    .grid{
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
